@@ -4,5 +4,4 @@ A known bug is that when you click edit book, some fields show up as "unknown".
 
 <img src="demo.png" width=500>
 <br>
-<br>
 <img src="demo2.png" width=500>
