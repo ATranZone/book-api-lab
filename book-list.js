@@ -52,22 +52,24 @@ async function setEditModal (isbn) {
     if(response.status === 200){
         let data = await response.text();
         console.log(data);
-        const book = JSON.parse(data);
- //i dont know why this isnt parsing properly. but it outputs in the console the correct information in the data variable
+        const books = JSON.parse(data);
+        const book = books.filter((book) => {
+            return book.isbn == isbn
+        })
         const{
             title,
             author,
             publisher,
             published,
-            numOfPages
-        } = book;
+            pages
+        } = book[0]
         
         document.getElementById('isbn').value = isbn;
-        document.getElementById('title').value = book.title;
-        document.getElementById('author').value = book.author;
-        document.getElementById('publisher').value = book.publisher;
-        document.getElementById('publish_date').value = book.published;
-        document.getElementById('numOfPages').value = book.numOfPages;
+        document.getElementById('title').value = title;
+        document.getElementById('author').value = author;
+        document.getElementById('publisher').value = publisher;
+        document.getElementById('publish_date').value = published;
+        document.getElementById('numOfPages').value = pages;
         
         //setting up the action url for the book
         
